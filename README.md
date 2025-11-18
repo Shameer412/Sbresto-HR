@@ -1,16 +1,27 @@
-# React + Vite
+# HR Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Color Scheme
 
-Currently, two official plugins are available:
+### Primary Colors
+- **Primary 50**: `#eff6ff` 
+- **Primary 500**: `#3b82f6`
+- **Primary 600**: `#2563eb`
+- **Primary 700**: `#1d4ed8`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Neutral Colors
+- **Gray 50**: `#f9fafb`
+- **Gray 100**: `#f3f4f6`
+- **Gray 500**: `#6b7280`
+- **Gray 700**: `#374151`
+- **Gray 900**: `#111827`
 
-## React Compiler
+### Semantic Colors
+- **Success**: `#10b981` ✅
+- **Warning**: `#f59e0b` ⚠️
+- **Error**: `#ef4444` ❌
+- **Info**: `#3b82f6` ℹ️
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Background Colors
+- **Background**: `#ffffff`
+- **Surface**: `#f8fafc`
+- **Sidebar**: `#1e293b`
