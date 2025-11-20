@@ -1,28 +1,27 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import Employeedashboard from "./employess/Employeedashboard";
-import Login from "./components/login/Login";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-const App = () => {
+import Login from './pages/login/Login';
+import DashboardLayout from './components/layout/DashboardLayout';
+
+function App() {
+  const { token } = useSelector((state) => state.auth);
+
   return (
     <Router>
-      <div className="min-h-screen">
-        <Routes>
-          
-          
-          
-          {/* Login route */}
-          <Route 
-            path="/" 
-            element={<Login />} 
-          />
-          <Route 
-            path="/dashboard" 
-            element={<Employeedashboard />}  />
-        </Routes>
-      </div>
+      <Routes>
+        {/* 1. Public Route */}
+        <Route path="/" element={!token ? <Login /> : <Navigate to="/dashboard" />} />
+
+        
+        <Route path="/dashboard/*" element={<DashboardLayout />} />
+
+        {/* 3. Catch All - Redirect to Login */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
     </Router>
   );
-};
+}
 
 export default App;

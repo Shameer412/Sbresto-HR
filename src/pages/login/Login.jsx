@@ -1,12 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { loginUser } from '../../features/auth/authSlice'; // Path check kar lena
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  
+  // Redux Hooks
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
+  // Global State se data nikalein
+  const { loading, error, user } = useSelector((state) => state.auth);
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
     rememberMe: false
   });
+
+  // 1. Redirect Logic: Agar user login ho jaye, dashboard bhejo
+  useEffect(() => {
+    if (user) {
+      navigate('/dashboard/overview'); // Redirect to main dashboard
+    }
+  }, [user, navigate]);
 
   // Handle Input Change
   const handleChange = (e) => {
@@ -20,28 +38,32 @@ const Login = () => {
   // Handle Submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Login data:', formData);
-    // Add logic here
+    
+    // 2. Dispatch Login Action
+    const credentials = {
+      email: formData.email,
+      password: formData.password
+    };
+    
+    dispatch(loginUser(credentials));
   };
 
   return (
     <div 
       className="min-h-screen flex items-center justify-center p-4 bg-cover bg-center"
-      // Cute Background Image add ki hai yahan
       style={{
         backgroundImage: `url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=1920')`
       }}
     >
-      {/* Overlay to ensure text readability if background is too bright */}
+      {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/30 to-blue-500/30 backdrop-blur-[2px]"></div>
 
-      {/* Main Card - Glassmorphism Style */}
+      {/* Main Card */}
       <div className="relative w-full max-w-md bg-white/80 backdrop-blur-xl rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/50 p-8 transform transition-all hover:scale-[1.01] duration-500">
         
         {/* Header Section */}
         <div className="text-center mb-8 animate-fade-in-down">
           <div className="flex flex-col items-center justify-center mb-4">
-            {/* Logo with subtle bounce animation */}
             <div className="w-14 h-14 bg-gradient-to-tr from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg mb-3 animate-bounce-slow">
               <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -57,6 +79,13 @@ const Login = () => {
             Please enter your details to sign in
           </p>
         </div>
+
+        {/* 3. ERROR MESSAGE DISPLAY */}
+        {error && (
+          <div className="mb-4 p-3 bg-red-100 border border-red-200 text-red-600 rounded-xl text-sm text-center animate-pulse">
+            {error}
+          </div>
+        )}
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -119,20 +148,25 @@ const Login = () => {
             </div>
           </div>
 
-          
-
-          {/* Submit Button */}
+          {/* Submit Button with Loading State */}
           <div className="animate-slide-up" style={{ animationDelay: '0.4s' }}>
             <button
               type="submit"
-              className="w-full py-3.5 px-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl font-semibold shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transform hover:-translate-y-0.5 transition-all duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              disabled={loading}
+              className={`w-full py-3.5 px-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl font-semibold shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transform hover:-translate-y-0.5 transition-all duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
             >
-              Sign In
+              {loading ? (
+                <div className="flex items-center justify-center gap-2">
+                   <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                   </svg>
+                   Signing In...
+                </div>
+              ) : "Sign In"}
             </button>
           </div>
         </form>
-
-       
       </div>
     </div>
   );
