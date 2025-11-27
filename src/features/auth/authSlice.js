@@ -1,37 +1,38 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import api from "../../utlis/api"; 
 
-// 1. Async Thunk for API Call
+// Async Thunk for API Call
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async (userCredentials, { rejectWithValue }) => {
     try {
-      const response = await fetch("https://app.sbresto.com/api/v1/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userCredentials),
-      });
+      // Ab hum 'fetch' ki jagah 'api.post' use karenge.
+      // Base URL aur Headers already 'api.js' mein set hain.
+      const response = await api.post("/login", userCredentials);
+      
+      const data = response.data; // Axios mein data direct .data mein hota hai
 
-      const data = await response.json();
-
-      // Agar API success: false return kare ya status code error ho
-      if (!response.ok || data.success === false) {
+      if (data.success === false) {
         return rejectWithValue(data.message || "Login failed");
       }
 
-      // LocalStorage mein token save karein (Browser refresh par data na uraane k liye)
+      // LocalStorage mein token save karein
       localStorage.setItem("token", data.data.token);
       localStorage.setItem("user", JSON.stringify(data.data.user));
 
-      return data; // Yeh payload ban jayega
+      return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      // Error handling for Axios
+      if (error.response && error.response.data && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
     }
   }
 );
 
-// Initial State check karein ke pehle se user logged in hai ya nahi
+// Initial State
 const token = localStorage.getItem("token");
 const user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null;
 
@@ -47,7 +48,6 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    // Logout action: State aur LocalStorage clear karne k liye
     logout: (state) => {
       state.user = null;
       state.token = null;
@@ -58,23 +58,19 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // --- REQUEST STARTED ---
       .addCase(loginUser.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      // --- REQUEST SUCCESS ---
       .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
-        // Aapke provided JSON structure ke mutabiq data set kar rahe hain
         state.user = action.payload.data.user;
         state.token = action.payload.data.token;
         state.successMessage = action.payload.message;
       })
-      // --- REQUEST FAILED ---
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload; // Error message
+        state.error = action.payload;
       });
   },
 });
