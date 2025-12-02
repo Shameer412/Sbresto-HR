@@ -21,10 +21,10 @@ const ProtectedRoute = ({ children }) => {
 const PublicRoute = ({ children }) => {
   const { token } = useSelector((state) => state.auth);
   
-  if (token) {
-    return <Navigate to="/dashboard/overview" replace />;
-  }
-  return children;
+if (token) {
+  return <Navigate to="/dashboard/overview" replace />;
+}
+return children;
 };
 
 function App() {

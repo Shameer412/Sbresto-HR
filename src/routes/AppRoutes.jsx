@@ -6,14 +6,13 @@ import coreRoutes from './index';
 const AppRoutes = () => {
   const { user } = useSelector((state) => state.auth);
 
-  // 🔥 FIX: Sahi Role Name nikalein (Object safe check)
+  
   const userRole = user?.role && typeof user.role === 'object' ? user.role.name : user?.role;
 
   const allowedRoutes = useMemo(() => {
     if (!user) return [];
     
-    // Console log karke check karein
-    // console.log("User Role for Routing:", userRole);
+  
 
     return coreRoutes.filter((route) => route.roles.includes(userRole));
   }, [user, userRole]);

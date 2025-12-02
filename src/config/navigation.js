@@ -22,11 +22,13 @@ export const ROLE_NAV_ITEMS = {
   // --- HR ---
   [ROLES.HR]: [
     { id: 'overview', label: 'HR Dashboard', icon: LayoutDashboard },
+    { id: 'users', label: 'User Management', icon: Users },
   ],
 
   // --- DEPT MANAGER ---
   [ROLES.DEPT_MANAGER]: [
     { id: 'overview', label: 'Team Overview', icon: LayoutDashboard },
+     { id: 'team', label: 'Team Management', icon: Users },
   ],
 
   // --- EMPLOYEE  ---
