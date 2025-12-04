@@ -5,7 +5,7 @@ const Overview = lazy(() => import('../components/superAdmin/overview/Overview')
 const UserManagement = lazy(() => import('../components/superAdmin/userManagement/UserMangement'));
 const TeamManagement = lazy(() => import('../components/departmentPanel/team/UserManagement'));
 const Attendance = lazy(() => import('../components/employeePanel/attendance/Attendance'));
-
+const AttendanceReview = lazy(() => import('../components/superAdmin/attendance/Attendance'));
 const coreRoutes = [
   
   {
@@ -38,7 +38,13 @@ const coreRoutes = [
  
     roles: [ROLES.EMPLOYEE,ROLES.DEPT_MANAGER,ROLES.HR],
   },
-
+  {
+    path: 'attendanceReview',
+    title: 'Attendance',
+    component: AttendanceReview,
+ 
+    roles: [ROLES.SUPER_ADMIN,ROLES.HR],
+  },
   
 ];
 

@@ -18,12 +18,14 @@ export const ROLE_NAV_ITEMS = {
   [ROLES.SUPER_ADMIN]: [
     { id: 'overview', label: 'Overview', icon: LayoutDashboard },
     { id: 'users', label: 'User Management', icon: Users },
+    { id: 'attendanceReview', label: 'Attendance Review', icon: CalendarCheck },
   ],
 
   // --- HR ---
   [ROLES.HR]: [
     { id: 'overview', label: 'HR Dashboard', icon: LayoutDashboard },
     { id: 'users', label: 'User Management', icon: Users },
+    { id: 'attendanceReview', label: 'Attendance Review', icon: CalendarCheck },
   ],
 
   // --- DEPT MANAGER ---
