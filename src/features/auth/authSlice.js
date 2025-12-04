@@ -6,8 +6,7 @@ export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async (userCredentials, { rejectWithValue }) => {
     try {
-      // Ab hum 'fetch' ki jagah 'api.post' use karenge.
-      // Base URL aur Headers already 'api.js' mein set hain.
+    
       const response = await api.post("/login", userCredentials);
       
       const data = response.data; // Axios mein data direct .data mein hota hai

@@ -4,7 +4,7 @@ import { ROLES } from '../config/navigation';
 const Overview = lazy(() => import('../components/superAdmin/overview/Overview'));
 const UserManagement = lazy(() => import('../components/superAdmin/userManagement/UserMangement'));
 const TeamManagement = lazy(() => import('../components/departmentPanel/team/UserManagement'));
-
+const Attendance = lazy(() => import('../components/employeePanel/attendance/Attendance'));
 
 const coreRoutes = [
   
@@ -30,6 +30,13 @@ const coreRoutes = [
     component: TeamManagement,
  
     roles: [ROLES.DEPT_MANAGER],
+  },
+  {
+    path: 'attendance',
+    title: 'Attendance',
+    component: Attendance,
+ 
+    roles: [ROLES.EMPLOYEE,ROLES.DEPT_MANAGER,ROLES.HR],
   },
 
   

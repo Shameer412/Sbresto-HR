@@ -1,6 +1,7 @@
 import { 
   LayoutDashboard, 
   Users, 
+  CalendarCheck,
 } from 'lucide-react';
 
 export const ROLES = {
@@ -34,5 +35,6 @@ export const ROLE_NAV_ITEMS = {
   // --- EMPLOYEE  ---
   [ROLES.EMPLOYEE]: [
     { id: 'overview', label: 'My Dashboard', icon: LayoutDashboard },
+    { id: 'attendance', label: 'Attendance', icon: CalendarCheck },
   ],
 };
