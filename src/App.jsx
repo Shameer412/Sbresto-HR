@@ -16,8 +16,7 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
-// --- 2. Public Route Wrapper ---
-// Ye check karega: Agar user pehle se logged in hai, toh Login page mat dikhao, Dashboard pe bhejo.
+
 const PublicRoute = ({ children }) => {
   const { token } = useSelector((state) => state.auth);
   
