@@ -1,42 +1,45 @@
-import { 
-  LayoutDashboard, 
-  Users, 
+import {
   CalendarCheck,
-} from 'lucide-react';
+  HandCoins,
+  LayoutDashboard,
+  Plane,
+  Users,
+} from "lucide-react";
 
 export const ROLES = {
-  
-  SUPER_ADMIN: 'admin',     
-  HR: 'HR',                        
-  DEPT_MANAGER: 'Department Manager', 
-  EMPLOYEE: 'Employee',
+  SUPER_ADMIN: "admin",
+  HR: "HR",
+  DEPT_MANAGER: "Department Manager",
+  EMPLOYEE: "Employee",
 };
 
 export const ROLE_NAV_ITEMS = {
-  
   // --- SUPER ADMIN  ---
   [ROLES.SUPER_ADMIN]: [
-    { id: 'overview', label: 'Overview', icon: LayoutDashboard },
-    { id: 'users', label: 'User Management', icon: Users },
-    { id: 'attendanceReview', label: 'Attendance Review', icon: CalendarCheck },
+    { id: "overview", label: "Overview", icon: LayoutDashboard },
+    { id: "users", label: "User Management", icon: Users },
+    { id: "attendanceReview", label: "Attendance Review", icon: CalendarCheck },
   ],
 
   // --- HR ---
   [ROLES.HR]: [
-    { id: 'overview', label: 'HR Dashboard', icon: LayoutDashboard },
-    { id: 'users', label: 'User Management', icon: Users },
-    { id: 'attendanceReview', label: 'Attendance Review', icon: CalendarCheck },
+    { id: "overview", label: "HR Dashboard", icon: LayoutDashboard },
+    { id: "users", label: "User Management", icon: Users },
+    { id: "attendanceReview", label: "Attendance Review", icon: CalendarCheck },
   ],
 
   // --- DEPT MANAGER ---
   [ROLES.DEPT_MANAGER]: [
-    { id: 'overview', label: 'Team Overview', icon: LayoutDashboard },
-     { id: 'team', label: 'Team Management', icon: Users },
+    { id: "overview", label: "Team Overview", icon: LayoutDashboard },
+    { id: "team", label: "Team Management", icon: Users },
   ],
 
   // --- EMPLOYEE  ---
   [ROLES.EMPLOYEE]: [
-    { id: 'overview', label: 'My Dashboard', icon: LayoutDashboard },
-    { id: 'attendance', label: 'Attendance', icon: CalendarCheck },
+    { id: "overview", label: "My Dashboard", icon: LayoutDashboard },
+    { id: "attendance", label: "Attendance", icon: CalendarCheck },
+
+    { id: "myLeaves", label: "Leave", icon: Plane },
+    { id: "myLoans", label: "Loan", icon: HandCoins },
   ],
 };
