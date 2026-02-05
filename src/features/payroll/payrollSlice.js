@@ -95,10 +95,10 @@ export const fetchEmployeeLoans = createAsyncThunk(
 // ------------------------------------------------------------------
 export const updatePayrollStatus = createAsyncThunk(
   "payroll/updatePayrollStatus",
-  async ({ id, status }, { rejectWithValue }) => {
+  async ({ id, ...data }, { rejectWithValue }) => {
     try {
-      // Assuming a generic update or specific status endpoint
-      const response = await api.put(`/hr/payrolls/${id}`, { status });
+      // API requires full object for validation, not just status
+      const response = await api.put(`/hr/payrolls/${id}`, data);
       return response.data;
     } catch (error) {
       return rejectWithValue(

@@ -111,16 +111,31 @@ const PayrollComplete = () => {
   const [isCalculating, setIsCalculating] = useState(false); // New loading state for step transition
 
   // Status Change Handler
+  // Status Change Handler
   const handleStatusChange = async (id, newStatus) => {
-      const originalStatus = payrolls.find(p => p.id === id)?.status;
+      const payroll = payrolls.find(p => p.id === id);
+      if(!payroll) return;
+
       if(window.confirm(`Update status to ${newStatus}?`)) {
           try {
-             await dispatch(updatePayrollStatus({ id, status: newStatus })).unwrap();
+             // Construct full payload as API expects all fields
+             const payload = {
+                 id: payroll.id,
+                 employee_id: payroll.employee_id,
+                 month: payroll.month,
+                 salary: payroll.salary,
+                 net_salary: payroll.net_salary,
+                 deductions: payroll.deductions || 0,
+                 loans: payroll.loans || 0,
+                 advances: payroll.advances || 0,
+                 status: newStatus
+             };
+
+             await dispatch(updatePayrollStatus(payload)).unwrap();
              // Success - UI updates automatically via Reducer
           } catch (err) {
               console.error("Status Update Failed", err);
               alert(`Failed to update status: ${err}`);
-              // Optional: Revert UI if optimistic (current reducer handles optimistic-like via API response)
           }
       }
   };
