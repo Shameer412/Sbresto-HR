@@ -1,24 +1,25 @@
-import { 
-  LayoutDashboard, 
-  Users, 
+import {
+  LayoutDashboard,
+  Users,
   CalendarCheck,
 } from 'lucide-react';
 
 export const ROLES = {
-  
-  SUPER_ADMIN: 'admin',     
-  HR: 'HR',                        
-  DEPT_MANAGER: 'Department Manager', 
+
+  SUPER_ADMIN: 'admin',
+  HR: 'HR',
+  DEPT_MANAGER: 'Department Manager',
   EMPLOYEE: 'Employee',
 };
 
 export const ROLE_NAV_ITEMS = {
-  
+
   // --- SUPER ADMIN  ---
   [ROLES.SUPER_ADMIN]: [
     { id: 'overview', label: 'Overview', icon: LayoutDashboard },
     { id: 'users', label: 'User Management', icon: Users },
     { id: 'attendanceReview', label: 'Attendance Review', icon: CalendarCheck },
+    { id: 'payroll', label: 'Payroll', icon: LayoutDashboard },
   ],
 
   // --- HR ---
@@ -26,6 +27,7 @@ export const ROLE_NAV_ITEMS = {
     { id: 'overview', label: 'HR Dashboard', icon: LayoutDashboard },
     { id: 'users', label: 'User Management', icon: Users },
     { id: 'attendanceReview', label: 'Attendance Review', icon: CalendarCheck },
+    { id: 'payroll', label: 'Payroll', icon: LayoutDashboard },
   ],
 
   // --- DEPT MANAGER ---
