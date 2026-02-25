@@ -3,14 +3,18 @@
 # 🚀 NEXUS — HR Portal
 ### _Smart Human Resource Management for Modern Startups_
 
-[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev)
-[![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white)](https://vitejs.dev)
-[![Redux Toolkit](https://img.shields.io/badge/Redux_Toolkit-2.x-764ABC?logo=redux&logoColor=white)](https://redux-toolkit.js.org)
-[![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-4-38BDF8?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://react.dev)
+[![Vite](https://img.shields.io/badge/Vite-7-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev)
+[![Redux Toolkit](https://img.shields.io/badge/Redux_Toolkit-2.x-764ABC?style=for-the-badge&logo=redux&logoColor=white)](https://redux-toolkit.js.org)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-4-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge)](LICENSE)
+
+<br/>
 
 > **NEXUS** is a full-featured, role-based HR management portal built for startups and growing teams.
 > Manage employees, attendance, payroll, and teams — all from one elegant dashboard.
+
+<br/>
 
 </div>
 
@@ -18,54 +22,44 @@
 
 ## 📸 Overview
 
-NEXUS provides a clean, responsive interface with a **dark sidebar** design and **role-aware navigation** — every user sees exactly what they need:
+NEXUS delivers a clean, responsive interface with a **dark glassmorphism sidebar** and **role-aware navigation** — every user sees exactly what they need, nothing more.
 
-| Role | Access |
+| Role | Dashboard Access |
 |---|---|
-| 🔴 **Super Admin** | Full system control: users, payroll, attendance review |
-| 🟠 **HR Manager** | Dashboard, user management, attendance review, payroll |
-| 🟡 **Department Manager** | Team overview and team member management |
-| 🟢 **Employee** | Personal dashboard and self-service attendance |
+| 🔴 **Super Admin** | Full control — users, payroll, attendance review |
+| 🟠 **HR Manager** | User management, attendance review, payroll |
+| 🟡 **Department Manager** | Team overview & team member management |
+| 🟢 **Employee** | Personal dashboard & self-service attendance |
 
 ---
 
-## ✨ Key Features
+## ✨ Features
 
-### 🔐 Authentication & Authorization
-- **JWT-based login** with token stored in `localStorage`
-- **Protected routes** — unauthenticated users are redirected to login automatically
-- **Role-based navigation** — sidebar menu items change dynamically based on the logged-in user's role
-- **Session persistence** — users stay logged in on page refresh
+### 🔐 Authentication & Security
+- JWT-based login with **token persistence** across page refresh
+- **Protected routes** — unauthorized users auto-redirected to login
+- **Role-based navigation** — sidebar adapts dynamically per user role
 
-### 👥 Employee Management _(Super Admin / HR)_
-- Create new employee profiles
-- View all employees with full details
-- Update existing employee information
-- Delete employees
-- **Create portal login** for any employee — gives them access to the self-service dashboard
+### 👥 Employee Management _(Admin / HR)_
+- Full **CRUD** — Create, Read, Update, Delete employee profiles
+- **Grant portal access** to any employee with one click (creates their login credentials)
 
-### 📅 Attendance Management
-- **Employee self-service**: Clock In and Clock Out with a single click
-- **Today's status**: Real-time display of current attendance state (`clocked_in`, `clocked_out`, `not started`)
-- **History view**: Full attendance log for each employee
-- **Admin / HR review panel**: Super Admins and HR can review all employee attendance records
+### 📅 Attendance
+- Employee **Clock In / Clock Out** with real-time status display
+- Full **attendance history** per employee
+- **Admin review panel** for HR and Super Admin
 
-### 💰 Payroll Management _(Super Admin / HR)_
-- Generate payroll for **individual employees** or in **bulk**
-- Track payroll status — `Pending`, `Due`, `Paid`
-- Update payroll status with a single action
-- **Paginated payroll list** for easy navigation through large records
-- **Loan Management**:
-  - Employees can request loans
-  - HR can view and manage loan requests per employee
+### 💰 Payroll _(Admin / HR)_
+- Generate payroll — **single or bulk**
+- Status tracking — `Pending` → `Due` → `Paid`
+- **Paginated** payroll records
+- **Loan requests** — employees apply, HR reviews per employee
 
-### 🏢 Team Management _(Department Manager)_
-- Department Managers can view and manage their own team members
-- View team overview from a dedicated dashboard
+### 🏢 Team Management _(Dept. Manager)_
+- View and manage your own department's team members
 
-### 📊 Overview Dashboard
-- All roles get a personalized overview page on login
-- Displays relevant KPIs and quick-access tools based on role
+### 📊 Dashboard Overview
+- Personalized KPI dashboard for every role on login
 
 ---
 
@@ -76,15 +70,13 @@ NEXUS provides a clean, responsive interface with a **dark sidebar** design and 
 | **React** | 19 | UI Library |
 | **Vite** | 7 | Build Tool & Dev Server |
 | **Redux Toolkit** | 2.x | Global State Management |
-| **React Redux** | 9 | React-Redux binding |
-| **React Router DOM** | 7 | Client-side routing |
-| **Axios** | 1.x | HTTP API calls |
-| **Tailwind CSS** | 4 | Utility-first CSS styling |
-| **Framer Motion** | 12 | Animations & transitions |
-| **Lucide React** | 0.5+ | Icon library |
-| **ESLint** | 9 | Code linting |
+| **React Router DOM** | 7 | Client-side Routing |
+| **Axios** | 1.x | HTTP API Calls |
+| **Tailwind CSS** | 4 | Styling |
+| **Framer Motion** | 12 | Animations |
+| **Lucide React** | latest | Icons |
 
-**Backend:** Laravel REST API (separate repository)
+> **Backend:** Laravel REST API _(separate repository)_
 
 ---
 
@@ -93,33 +85,24 @@ NEXUS provides a clean, responsive interface with a **dark sidebar** design and 
 ```
 hr-portal/
 ├── src/
-│   ├── App.jsx                  # Root app with route guards
-│   ├── main.jsx                 # Entry point
-│   ├── config/
-│   │   └── navigation.js        # Role definitions & sidebar nav config
-│   ├── features/                # Redux slices (state management)
-│   │   ├── auth/                # Login, logout, token handling
-│   │   ├── employee/            # Employee CRUD + create portal user
-│   │   ├── attendance/          # Clock in/out, today status, history
-│   │   ├── payroll/             # Payroll create/fetch/update + loans
-│   │   ├── role/                # Roles management
-│   │   └── team/                # Team management
+│   ├── App.jsx                 # Root with route guards
+│   ├── config/navigation.js    # Role definitions & nav config
+│   ├── features/               # Redux slices
+│   │   ├── auth/               # Login, logout, token
+│   │   ├── employee/           # Employee CRUD + portal login
+│   │   ├── attendance/         # Clock in/out, history
+│   │   ├── payroll/            # Payroll + loans
+│   │   ├── role/               # Role management
+│   │   └── team/               # Team management
 │   ├── components/
-│   │   ├── layout/              # DashboardLayout, Sidebar, Header
-│   │   ├── superAdmin/          # Admin-specific: overview, users, attendance, payroll
-│   │   ├── departmentPanel/     # Dept Manager: team management
-│   │   └── employeePanel/       # Employee self-service: attendance
-│   ├── pages/
-│   │   └── login/               # Login page
-│   ├── routes/
-│   │   ├── index.js             # Core route definitions (role-gated)
-│   │   └── AppRoutes.jsx        # Route renderer
-│   └── utils/
-│       └── api.js               # Axios instance (base URL + auth header)
-├── public/
+│   │   ├── layout/             # DashboardLayout, Sidebar, Header
+│   │   ├── superAdmin/         # Admin panels
+│   │   ├── departmentPanel/    # Dept Manager panels
+│   │   └── employeePanel/      # Employee self-service
+│   ├── pages/login/            # Login page
+│   └── routes/                 # Route definitions
 ├── index.html
-├── vite.config.js
-└── package.json
+└── vite.config.js
 ```
 
 ---
@@ -127,94 +110,50 @@ hr-portal/
 ## 🚀 Getting Started
 
 ### Prerequisites
+- **Node.js** v18+
+- **npm** v9+
+- Running **Laravel backend**
 
-- **Node.js** v18 or higher
-- **npm** v9 or higher
-- A running **Laravel backend** (HR API)
-
-### Installation
+### Setup
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/your-org/hr-portal.git
+# Clone & install
+git clone https://github.com/Shameer412/Sbresto-HR.git
 cd hr-portal
-
-# 2. Install dependencies
 npm install
 
-# 3. Configure environment
-cp .env.example .env
-```
+# Configure environment
+echo "VITE_API_BASE_URL=http://your-api-url.com/api" > .env
 
-### Environment Variables
-
-Create a `.env` file in the project root:
-
-```env
-VITE_API_BASE_URL=http://your-backend-url.com/api
-```
-
-> Replace `http://your-backend-url.com/api` with your actual Laravel API base URL.
-
-### Running the App
-
-```bash
-# Start development server
+# Start dev server
 npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-
-# Run linter
-npm run lint
 ```
 
-The app will be available at `http://localhost:5173`
+App runs at → **`http://localhost:5173`**
 
 ---
 
-## 🔗 API Endpoints Reference
+## 🔗 API Reference
 
-All requests are authenticated via `Bearer <token>` header (set automatically by Axios).
+All requests use `Bearer <token>` auth header (auto-set by Axios).
 
 | Feature | Method | Endpoint |
 |---|---|---|
 | Login | `POST` | `/login` |
-| Get all employees | `GET` | `/hr/employees` |
-| Create employee | `POST` | `/hr/employees` |
-| Get employee by ID | `GET` | `/hr/employees/{id}` |
-| Update employee | `PUT` | `/hr/employees/{id}` |
-| Delete employee | `DELETE` | `/hr/employees/{id}` |
-| Create portal login for employee | `POST` | `/hr/employees/{id}/create-user` |
+| All Employees | `GET` | `/hr/employees` |
+| Create Employee | `POST` | `/hr/employees` |
+| Update Employee | `PUT` | `/hr/employees/{id}` |
+| Delete Employee | `DELETE` | `/hr/employees/{id}` |
+| Create Portal Login | `POST` | `/hr/employees/{id}/create-user` |
 | Clock In | `POST` | `/hr/attendance/clock-in` |
 | Clock Out | `POST` | `/hr/attendance/clock-out` |
-| Today's attendance | `GET` | `/hr/attendance/today?employee_id={id}` |
-| Attendance history | `GET` | `/hr/attendance/history?employee_id={id}` |
-| Get payrolls | `GET` | `/hr/payrolls?page={n}` |
-| Create payroll | `POST` | `/hr/payrolls` |
-| Update payroll status | `PUT` | `/hr/payrolls/{id}` |
-| Request loan | `POST` | `/hr/employee/loan/request` |
-| Get employee loans | `GET` | `/hr/employee/{id}/loan/requests` |
-
----
-
-## 🎨 Color Scheme
-
-| Token | Hex | Usage |
-|---|---|---|
-| Primary 50 | `#eff6ff` | Light backgrounds |
-| Primary 500 | `#3b82f6` | Buttons, links |
-| Primary 600 | `#2563eb` | Hover states |
-| Primary 700 | `#1d4ed8` | Active states |
-| Gray 500 | `#6b7280` | Secondary text |
-| Gray 900 | `#111827` | Primary text |
-| Success | `#10b981` | Positive states |
-| Warning | `#f59e0b` | Caution states |
-| Error | `#ef4444` | Error states |
-| Sidebar | `#1e293b` | Dark sidebar bg |
+| Today's Attendance | `GET` | `/hr/attendance/today?employee_id={id}` |
+| Attendance History | `GET` | `/hr/attendance/history?employee_id={id}` |
+| Get Payrolls | `GET` | `/hr/payrolls?page={n}` |
+| Create Payroll | `POST` | `/hr/payrolls` |
+| Update Payroll Status | `PUT` | `/hr/payrolls/{id}` |
+| Request Loan | `POST` | `/hr/employee/loan/request` |
+| Employee Loans | `GET` | `/hr/employee/{id}/loan/requests` |
 
 ---
 
@@ -223,32 +162,31 @@ All requests are authenticated via `Bearer <token>` header (set automatically by
 - [ ] Leave management module
 - [ ] Performance review system
 - [ ] Employee document uploads
-- [ ] Notifications system (real-time)
-- [ ] Export reports (PDF / Excel)
-- [ ] Dark mode toggle
+- [ ] Real-time notifications
+- [ ] PDF / Excel report exports
+- [ ] Mobile app (React Native)
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome!
-
-1. Fork the repository
-2. Create your feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
+1. Fork the repo
+2. Create branch: `git checkout -b feature/your-feature`
+3. Commit: `git commit -m 'Add your feature'`
+4. Push: `git push origin feature/your-feature`
+5. Open a Pull Request ✅
 
 ---
 
 ## 📄 License
 
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+Licensed under the **MIT License** — see [LICENSE](LICENSE) for details.
 
 ---
 
 <div align="center">
 
-Built with ❤️ for startups by **Sbresto Team**
+Built with ❤️ by the **Sbresto Team**
+_Empowering startups to manage people, smarter._
 
 </div>
