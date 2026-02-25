@@ -20,7 +20,23 @@
 
 ---
 
-## 📸 Overview
+## 🖼️ Screenshots
+
+<div align="center">
+
+### 📊 User Management Dashboard
+![NEXUS Dashboard](./public/hr1.png)
+
+<br/>
+
+### � Attendance Module
+![NEXUS Attendance](./public/hr2.png)
+
+</div>
+
+---
+
+## �📸 Overview
 
 NEXUS delivers a clean, responsive interface with a **dark glassmorphism sidebar** and **role-aware navigation** — every user sees exactly what they need, nothing more.
 
@@ -101,6 +117,9 @@ hr-portal/
 │   │   └── employeePanel/      # Employee self-service
 │   ├── pages/login/            # Login page
 │   └── routes/                 # Route definitions
+├── public/
+│   ├── hr1.png                 # Dashboard screenshot
+│   └── hr2.png                 # Attendance screenshot
 ├── index.html
 └── vite.config.js
 ```
